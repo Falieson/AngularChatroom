@@ -13,7 +13,7 @@ var echoHandler = function(req, res) {
     });
 
     req.on('end', function() {
-      console.log('end transmission');
+      console.log('end transmission', inputData);
       res.writeHead(200, {
         'Content-Type': 'text/plain'
       })

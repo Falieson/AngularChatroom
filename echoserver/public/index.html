@@ -17,9 +17,9 @@
     <script>
 
       $("#inputForm").submit(function( event ) {
-        event.stopPropagation();
+        event.preventDefault();
         var data = $(".inputField").val();
-        $.post( "//localhost:3000").success(function( data ) {
+        $.post( "//localhost:3000", data).success(function( data ) {
 
             console.log(arguments);
         });

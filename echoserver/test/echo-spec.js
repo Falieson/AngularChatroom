@@ -26,8 +26,21 @@ RequestMock.endPost = function() {
 
 
 describe('echoHandler', function() {
-  it('should echo a result back', function() {
-    
+  it('should echo a result back', function(done) {
+    var ping = "Hello world";
+    var request = new RequestMock();
+    var response = {
+      writeHead: function(status, data) {
+        status.should.equal(200);
+      },
+      end: function(res) {
+        res.should.equal(ping);
+        done();
+      }
+    }
+
+    echoHandler(request)
+
   
   
   

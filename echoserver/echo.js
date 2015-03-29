@@ -22,7 +22,7 @@ var echoHandler = function(req, res) {
     });
 
     req.on('error', function(err) {
-      res.writeHead(200, {
+      res.writeHead(400, {
         'Content-Type': 'text/json'
       });
       res.end(JSON.stringify(err));

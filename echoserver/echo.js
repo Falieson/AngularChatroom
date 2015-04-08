@@ -6,6 +6,7 @@ var publicPath = path.join(__dirname, 'public');
 
 var echoHandler = function(req, res) {
   if (req.method === 'POST') {
+    console.log(req.url)
     var inputData = '';
     req.on('data', function(data) {
       console.log('polling data ', data)

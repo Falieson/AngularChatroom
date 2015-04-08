@@ -40,14 +40,7 @@ describe('echoHandler', function() {
     }
 
     echoHandler(request)
-
-  
-  
-  
-  
-  
-  
-  })
+  });
 
 
 });

@@ -1,5 +1,9 @@
 /* a basic in memory store */
 
+//return promise to simulate async operations
+var Promise = require('bluebird');
+
+
 var Chatroom = function() {
   this.messages = [];
 };
@@ -7,12 +11,16 @@ var Chatroom = function() {
 Chatroom.prototype = {
   pushMessage: function(msg) {
     msg.timestamp = Date.now();
-    this.messages.push(msg);
-    return this;
+    return Promise.try(function() {
+      this.messages.push(msg);
+      return this;
+    });
   },
   getMessages: function() {
-    return messages.sort(function(msg1, msg2) {
-      return msg1.timestamp - msg2.timestamp;
+    return Promise.try(function() {
+      return messages.sort(function(msg1, msg2) {
+        return msg1.timestamp - msg2.timestamp;
+      });
     });
   }
 };
@@ -26,14 +34,18 @@ var UserCollection = function() {
 
 UserCollection.prototype = {
   create: function(username, password) {
-    this.users[username] = {
-      username: username,
-      password: password
-    };
-    return this;
+    return Promise.try(function() {
+      this.users[username] = {
+        username: username,
+        password: password
+      };
+      return this;
+    });
   },
   find: function(username, password) {
-    return this.users[username];
+    return Promise.try(function() {
+      return this.users[username];
+    });
   }
 };
 

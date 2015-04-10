@@ -7,5 +7,13 @@
     "test": "mocha test"
   },
   "author": "Peter de Croos",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^2.9.24",
+    "lodash": "^3.6.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.4",
+    "should": "^5.2.0"
+  }
 }

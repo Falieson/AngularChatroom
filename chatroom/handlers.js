@@ -1,8 +1,15 @@
+var Store = require('./store-service');
+var config = require('./config');
+
+var chatroom = new Store.Chatroom();
+var Users = new Store.UserCollection();
 
 
 var session = {
-  login: function() {
-  
+  login: function(res, res, next) {
+    
+
+
   }
 }
 

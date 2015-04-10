@@ -1,28 +1,47 @@
 var mocha = require('mocha');
 var should = require('should');
 
-
 describe('handlers', function() {
   var handlers = require('../handlers.js');
   /* basic requirements */
 
-  it('lets me sign up', function() {
+  it('lets me sign up', function(done) {
+    var req = {
+      body: {
+        username: 'peter@example.com',
+        password: 'noderocks!'
+      }
+    },
+    var res: {
+      status: function(st) {
+        st.should.equal(200);
+        return this;
+      },
+      send: function(data) {
+        data.status.should.equal('200')
+        done();
+      }
+    }
+  });
+
+  xit('takes an encoded jwt, and puts the data in the body!', function() {
+  
   
   });
 
-  it('returns a jwt for loggin in', function() {
+  xit('returns a jwt for loggin in', function() {
   
   });
 
-  it('errors out when given an invalid jwt', function() {
+  xit('errors out when given an invalid jwt', function() {
   
   });
 
-  it('lets me post a message', function() {
+  xit('lets me post a message', function() {
   
   });
 
-  it('gets back messages', function() {
+  xit('gets back messages', function() {
   
   
   });
@@ -30,7 +49,7 @@ describe('handlers', function() {
 
   /* advanced */
 
-  it('takes a timestamp and ony returns messages after that', function() {
+  xit('takes a timestamp and ony returns messages after that', function() {
   
   
   });

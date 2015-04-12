@@ -1,23 +1,24 @@
 var mocha = require('mocha');
 var should = require('should');
 var echoHandler = require('../echo.js').echoHandler;
-var util = require('utils');
+var util = require('util');
 var EventEmitter = require('events').EventEmitter;
-
-var RequestMock = function() {
+var _ = require('lodash');
+var RequestMock = function(opt) {
   EventEmitter.call(this);
+  _.extend(this, opt || {});
 };
 
 util.inherits(RequestMock, EventEmitter);
 
-RequestMock.pushData = function(data) {
+RequestMock.prototype.pushData = function(data) {
   var self = this;
   setTimeout(function() {
     self.emit('data', data);
   }, 0);
 };
 
-RequestMock.endPost = function() {
+RequestMock.prototype.endPost = function() {
   var self = this;
   setTimeout(function() {
     self.emit('end');
@@ -28,7 +29,9 @@ RequestMock.endPost = function() {
 describe('echoHandler', function() {
   it('should echo a result back', function(done) {
     var ping = "Hello world";
-    var request = new RequestMock();
+    var request = new RequestMock({
+      method: 'POST'
+    });
     var response = {
       writeHead: function(status, data) {
         status.should.equal(200);
@@ -39,7 +42,10 @@ describe('echoHandler', function() {
       }
     }
 
-    echoHandler(request)
+    echoHandler(request, response);
+    request.pushData(ping);
+    request.endPost();
+
   });
 
 });

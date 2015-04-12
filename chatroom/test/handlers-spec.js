@@ -94,23 +94,6 @@ describe('handlers', function() {
   });
 
 
-  /* advanced */
-
-  xit('takes a timestamp and ony returns messages after that', function() {
-  
-  
-  });
-
-  
-
-  
-
-
-
-
-
-
-
 });
 
 

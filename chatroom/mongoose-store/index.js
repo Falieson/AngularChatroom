@@ -23,7 +23,11 @@ MessageSchema.static('pushMessage', function(msg) {
 
 MessageSchema.static('retrieve', function() {
   /* code here */
-})
+});
+
+mongoose.model('User', UserSchema);
+
+mongoose.model('Message', MessageSchema);
 
 
 

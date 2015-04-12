@@ -22,10 +22,14 @@ describe('handlers', function() {
         done();
       }
     }
+
+    handlers.user.signup(req, res, )
+
+
   });
 
   xit('takes an encoded jwt, and puts the data in the body!', function() {
-  
+    
   
   });
 

@@ -52,11 +52,11 @@ app.use(function(req, res, next) {
   setTimeout(function() {
     next();
   }, 3000);
-})
+});
 
 app.use(function(req, res, next) {
   res.send('hello world!!');
-})
+});
 
 ```
 

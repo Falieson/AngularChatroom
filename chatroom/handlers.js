@@ -46,7 +46,7 @@ module.exports.user = {
 };
 
 module.exports.chatMessages = {
-  create: function(req, res, next) {
+  push: function(req, res, next) {
     var username = req.user.username;
     var message = req.body.message;
     chatroom.push({

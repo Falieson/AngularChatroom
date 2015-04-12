@@ -11,14 +11,16 @@ var Chatroom = function() {
 Chatroom.prototype = {
   push: function(msg) {
     msg.timestamp = Date.now();
+    var self = this;
     return Promise.try(function() {
-      this.messages.push(msg);
-      return this;
+      self.messages.push(msg);
+      return self;
     });
   },
   get: function() {
+    var self = this;
     return Promise.try(function() {
-      return messages.sort(function(msg1, msg2) {
+      return self.messages.sort(function(msg1, msg2) {
         return msg1.timestamp - msg2.timestamp;
       });
     });

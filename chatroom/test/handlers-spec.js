@@ -58,13 +58,39 @@ describe('handlers', function() {
   });
 
 
-  xit('lets me post a message', function() {
-  
+  it('lets me post a message', function(done) {
+    var req = {
+      body: {
+        message: "hi everybody"
+      },
+      user: {
+        username: 'peter@example.com'
+      }
+    };
+
+    var res = {
+      send: function(data) {
+        data.status.should.equal('success');
+        done();
+      }
+    };
+
+    handlers.chatMessages.push(req, res);
   });
 
-  xit('gets back messages', function() {
-  
-  
+  it('gets back messages', function(done) {
+    var req = {
+    
+    };
+    var res = {
+      send: function(data) {
+        data.messages.length.should.equal(1);
+        data.messages[0].message.should.equal('hi everybody');
+        done();
+      }
+    };
+
+    handlers.chatMessages.read(req, res);
   });
 
 

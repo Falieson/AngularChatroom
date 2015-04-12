@@ -7,7 +7,7 @@ var chatroom = new Store.Chatroom();
 var Users = new Store.UserCollection();
 
 
-var session = {
+module.exports.session = {
   login: function(req, res, next) {
     var username = res.body.username;
     var password = res.body.password;
@@ -27,7 +27,7 @@ var session = {
   }
 };
 
-var user = {
+module.exports.user = {
   signup: function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
@@ -38,13 +38,13 @@ var user = {
       }, config.secret);
       //send the token back
       res.send({
-        token: token;
+        token: token
       });
     });
   }
 };
 
-var chatMessages = {
+module.exports.chatMessages = {
   create: function(req, res, next) {
     var username = req.user.username;
     var message = req.body.message;

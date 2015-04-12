@@ -1,5 +1,7 @@
 var mocha = require('mocha');
 var should = require('should');
+var jwt = require('jsonwebtoken');
+var config = require('../config.js');
 
 describe('handlers', function() {
   var handlers = require('../handlers.js');
@@ -18,23 +20,28 @@ describe('handlers', function() {
         return this;
       },
       send: function(data) {
-        data.status.should.equal('200')
-        done();
+        jwt.verify(data.token, config.secret, function(err, decoded) {
+          if (err) { return done(err) }
+          decoded.username.should.equal('peter@example.com');
+          done()
+        })
+        
       }
-    }
+    };
 
     handlers.user.signup(req, res)
 
 
   });
 
-  xit('takes an encoded jwt, and puts the data in the body!', function() {
-    
-  
-  });
-
   xit('returns a jwt for loggin in', function() {
-  
+    var req = {
+      body: {
+        username: 'peter@example.com',
+        password: 'noderocks!'
+      }
+    };
+
   });
 
   xit('errors out when given an invalid jwt', function() {

@@ -13,6 +13,22 @@ app.delete('/:resource', function(req, res, next) { /* ...  */});
 
 ```
 
+###Objectives: 
+
+* get signup working!
+* get signin working!
+* post a message
+* retrieve messages
+
+###extras
+
+* passwords are being stored in plain text, this is like total bad news bears!, encrypt it
+* switch to a mongodb backend! I've written some boiler code that you guys can use
+* write your own json parsing middleware
+
+
+
+
 
 
 

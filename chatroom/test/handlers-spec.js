@@ -11,8 +11,8 @@ describe('handlers', function() {
         username: 'peter@example.com',
         password: 'noderocks!'
       }
-    },
-    var res: {
+    };
+    var res = {
       status: function(st) {
         st.should.equal(200);
         return this;
@@ -23,7 +23,7 @@ describe('handlers', function() {
       }
     }
 
-    handlers.user.signup(req, res, )
+    handlers.user.signup(req, res)
 
 
   });

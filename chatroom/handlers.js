@@ -18,13 +18,13 @@ var session = {
       }, config.secret);
       //send the token back
       res.send({
-        token: token;
+        token: token
       });
     })
     .catch(function(err) {
       next(err);
     });
-  };
+  }
 };
 
 var user = {

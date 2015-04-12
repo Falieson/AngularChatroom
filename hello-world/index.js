@@ -1,8 +1,7 @@
-
+console.log('now listening to hello world');
 var http = require('http');
 
 var handler = function(req, res) {
-  console.log('now listening to hello world');
   res.end('hello world!');
 };
 

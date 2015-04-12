@@ -9,6 +9,7 @@
   "author": "Peter de Croos",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.12.3",
     "lodash": "^3.6.0",
     "mocha": "^2.2.1",
     "should": "^5.2.0"

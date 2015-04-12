@@ -6,21 +6,13 @@ var publicPath = path.join(__dirname, 'public');
 
 var echoHandler = function(req, res) {
   if (req.method === 'POST') {
-    console.log(req)
-    var inputData = '';
-    req.on('data', function(data) {
-      console.log('polling data ', data)
-      inputData += data;
-    });
+    /*
+     * Your code here
+     *
+     */
+    
 
-    req.on('end', function() {
-      console.log('end transmission', inputData);
-      res.writeHead(200, {
-        'Content-Type': 'text/plain'
-      });
 
-      res.end(inputData);
-    });
 
     req.on('error', function(err) {
       res.writeHead(400, {

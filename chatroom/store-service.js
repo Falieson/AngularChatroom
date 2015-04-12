@@ -9,14 +9,14 @@ var Chatroom = function() {
 };
 
 Chatroom.prototype = {
-  pushMessage: function(msg) {
+  push: function(msg) {
     msg.timestamp = Date.now();
     return Promise.try(function() {
       this.messages.push(msg);
       return this;
     });
   },
-  getMessages: function() {
+  get: function() {
     return Promise.try(function() {
       return messages.sort(function(msg1, msg2) {
         return msg1.timestamp - msg2.timestamp;
@@ -34,17 +34,29 @@ var UserCollection = function() {
 
 UserCollection.prototype = {
   create: function(username, password) {
+    var self = this;
     return Promise.try(function() {
-      this.users[username] = {
+      if (self.users[username]) {
+        throw new Error('User already exists');
+      }
+
+      self.users[username] = {
         username: username,
         password: password
       };
-      return this;
+      return self.users[username];
     });
   },
   find: function(username, password) {
     return Promise.try(function() {
-      return this.users[username];
+      var user = this.users[username];
+      if (user) {
+        if (user.password === password) {
+          return user;
+        }
+      } else {
+        throw new Error('user not found');
+      }
     });
   }
 };

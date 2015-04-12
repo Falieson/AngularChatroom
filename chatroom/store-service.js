@@ -48,8 +48,9 @@ UserCollection.prototype = {
     });
   },
   find: function(username, password) {
+    var self = this;
     return Promise.try(function() {
-      var user = this.users[username];
+      var user = self.users[username];
       if (user) {
         if (user.password === password) {
           return user;

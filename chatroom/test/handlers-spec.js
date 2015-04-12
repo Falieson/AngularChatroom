@@ -34,7 +34,7 @@ describe('handlers', function() {
 
   });
 
-  xit('returns a jwt for loggin in', function() {
+  it('returns a jwt for loggin in', function(done) {
     var req = {
       body: {
         username: 'peter@example.com',
@@ -42,11 +42,21 @@ describe('handlers', function() {
       }
     };
 
+    var res = {
+      send: function(data) {
+        console.log('data', data)
+        jwt.verify(data.token, config.secret, function(err, decoded) {
+          if (err) { return done(err) }
+          console.log('err', decoded)
+          decoded.username.should.equal('peter@example.com');
+          done()
+        });
+      }
+    }
+
+    handlers.session.login(req, res);
   });
 
-  xit('errors out when given an invalid jwt', function() {
-  
-  });
 
   xit('lets me post a message', function() {
   

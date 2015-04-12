@@ -9,8 +9,8 @@ var Users = new Store.UserCollection();
 
 module.exports.session = {
   login: function(req, res, next) {
-    var username = res.body.username;
-    var password = res.body.password;
+    var username = req.body.username;
+    var password = req.body.password;
     Users.find(username, password)
     .then(function(user) {
       var token = jwt.sign({
@@ -22,6 +22,7 @@ module.exports.session = {
       });
     })
     .catch(function(err) {
+      console.log('$$$', err)
       next(err);
     });
   }
@@ -33,7 +34,7 @@ module.exports.user = {
     var password = req.body.password;
     return Users.create(username, password)
     .then(function(user) {
-        var token = jwt.sign({
+      var token = jwt.sign({
         username: user.username
       }, config.secret);
       //send the token back

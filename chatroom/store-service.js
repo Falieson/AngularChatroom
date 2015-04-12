@@ -9,7 +9,7 @@ var Chatroom = function() {
 };
 
 Chatroom.prototype = {
-  push: function(msg) {
+  pushMessage: function(msg) {
     msg.timestamp = Date.now();
     var self = this;
     return Promise.try(function() {
@@ -17,7 +17,7 @@ Chatroom.prototype = {
       return self;
     });
   },
-  get: function() {
+  retrieve: function() {
     var self = this;
     return Promise.try(function() {
       return self.messages.sort(function(msg1, msg2) {
@@ -35,7 +35,7 @@ var UserCollection = function() {
 };
 
 UserCollection.prototype = {
-  create: function(username, password) {
+  signup: function(username, password) {
     var self = this;
     return Promise.try(function() {
       if (self.users[username]) {
@@ -49,7 +49,7 @@ UserCollection.prototype = {
       return self.users[username];
     });
   },
-  find: function(username, password) {
+  search: function(username, password) {
     var self = this;
     return Promise.try(function() {
       var user = self.users[username];

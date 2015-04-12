@@ -1,4 +1,13 @@
 
 
 
-module.exports.secret = "kittens999";
+module.exports.secret = new Buffer("kittens999", 'base64');
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+
+
+module.exports.schema = {
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    index: {sparse: true}
+  },
+  password: {
+    type: String,
+    required: true
+  }
+};
+
+
+

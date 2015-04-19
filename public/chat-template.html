@@ -1,0 +1,27 @@
+<style>
+chat ul {
+  max-height: 150px;
+  border: 1px solid red;
+  overflow: scroll;
+}
+chat .message-body{
+  width: 250px;
+  height: 200px;
+}
+</style>
+
+<ul scroll-glue>
+  <li ng-repeat="message in messages | orderBy:'time'">
+  {{message.time | date:'HH:mm:ss'}} - <strong>{{message.username}}:</strong> <message-text message="message.message"></message-text>
+  </li>
+</ul>
+
+
+<form ng-submit="saveMessage()">
+
+  #nickName<input ng-model="sender" placeholder="#nickName">
+  <br />Message:<br />
+  <textarea class="message-body" ng-model="newMessage"></textarea><br />
+  <button type="submit">kthxbai</button>
+
+</form>

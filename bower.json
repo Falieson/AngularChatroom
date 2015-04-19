@@ -1,0 +1,18 @@
+{
+  "name": "AngularChatroom",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Falieson/learn-node-class",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-scroll-glue": "~2.0.5"
+  }
+}

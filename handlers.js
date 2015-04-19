@@ -48,7 +48,8 @@ module.exports.user = {
 
 module.exports.chatMessages = {
   push: function(req, res, next) {
-    var username = req.user.username;
+    // var username = req.user.username;
+    var username = req.body.username;
     var message = req.body.message;
     chatroom.pushMessage({
       username: username,
@@ -70,15 +71,3 @@ module.exports.chatMessages = {
     .catch(next);
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,14 +1,15 @@
 // setup
 var express = require('express');
 var app = express();
-var config = require('./config');
 var path = require('path');
 var jwt = require('express-jwt');
-var handlers = require('./handlers');
 var mongoose = require('mongoose');                     // mongoose for mongodb
 var morgan = require('morgan');             // log requests to the console (express4)
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+
+var config = require('./config');
+var handlers = require('./handlers');
 
 mongoose.connect('localhost/AngularChatroom');
 
@@ -27,9 +28,10 @@ app.post('/session/login', handlers.session.login);
 app.post('/user/signup', handlers.user.signup);
 
 //all routes after this need to be logged in
-app.use(jwt({
-  secret: config.secret
-}));
+// TODO: uncomment
+// app.use(jwt({
+//   secret: config.secret
+// }));
 
 app.get('/messages', handlers.chatMessages.read);
 app.post('/messages', handlers.chatMessages.push);
